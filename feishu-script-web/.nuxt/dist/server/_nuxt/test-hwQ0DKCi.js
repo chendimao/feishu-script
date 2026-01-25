@@ -70,7 +70,7 @@ ${JSON.stringify(recordsResponse, null, 2)}
             urls: ["https://bit.ly/test1", "https://t.cn/test2"]
           }
         });
-        result.value += `URL扩展API测试:
+        result.value += `URL解析API测试:
 ${JSON.stringify(urlResponse, null, 2)}`;
       } catch (error) {
         result.value = `错误: ${error}`;

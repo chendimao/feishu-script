@@ -2,8 +2,8 @@ import { getTableRecords, updateTableRecords } from '../utils/feishu-bitable'
 import { expandUrlsInBatch } from '../utils/url-expander'
 
 /**
- * URL 扩展批量处理 API
- * 接收飞书表格数据，处理短链接，返回扩展结果
+ * URL 解析批量处理 API
+ * 接收飞书表格数据，处理短链接，返回解析结果
  */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
 
     return processRecords(allRecords, field_id, app_token, table_id, replace_mode, new_field_name)
   } catch (error: any) {
-    console.error('URL 扩展处理失败:', error)
+    console.error('URL 解析处理失败:', error)
     throw createError({
       statusCode: 500,
       message: error.message || '处理失败'
@@ -74,7 +74,7 @@ async function processRecords(
     }
   }
 
-  // 批量扩展 URL
+  // 批量解析 URL
   const results = await expandUrlsInBatch(urls)
 
   // 构建处理结果

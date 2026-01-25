@@ -45,5 +45,5 @@ backupFiles.forEach(filePath => {
 });
 
 console.log(`\n📊 清理完成: 删除了 ${removedCount} 个文件`);
-console.log('\n🎉 短链接扩展器简化版和完整版已成功移除！');
+console.log('\n🎉 短链接解析器简化版和完整版已成功移除！');
 console.log('💡 现在只保留插件版本，提供更好的用户体验。');

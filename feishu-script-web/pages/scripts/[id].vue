@@ -21,7 +21,7 @@ const scriptId = computed(() => route.params.id as string)
 
 // 脚本名称映射
 const scriptNames: Record<string, string> = {
-  'url-expander': 'URL 短链接扩展器',
+  'url-expander': 'URL 短链接解析器',
   'data-processor': '数据处理器',
   'batch-export': '批量导出工具',
   'custom-script': '自定义脚本'

@@ -29,7 +29,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   __ssrInlineRender: true,
   setup(__props) {
     useHead({
-      title: "短链接扩展器 - 多维表格脚本管理"
+      title: "短链接解析器 - 多维表格脚本管理"
     });
     let currentTable = null;
     const isReady = ref(false);
@@ -40,7 +40,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const tableRecords = ref([]);
     const selectedFieldId = ref("");
     const replaceMode = ref("inplace");
-    const newColumnName = ref("扩展后链接");
+    const newColumnName = ref("解析后链接");
     const urlPattern = ref("");
     const matchingUrls = ref([]);
     const totalCount = ref(0);
@@ -210,7 +210,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           const item = matchingUrls.value[i];
           item.processing = true;
           try {
-            console.log(`正在扩展URL: ${item.originalUrl}`);
+            console.log(`正在解析URL: ${item.originalUrl}`);
             const response = await $fetch("/api/url-expand/batch", {
               method: "POST",
               body: {
@@ -225,11 +225,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 item.expandedUrl = result.expandedUrl;
                 item.expanded = true;
                 successCount.value++;
-                console.log(`✅ 扩展成功: ${item.originalUrl} -> ${result.expandedUrl}`);
+                console.log(`✅ 解析成功: ${item.originalUrl} -> ${result.expandedUrl}`);
               } else {
-                item.error = result.error || "扩展失败";
+                item.error = result.error || "解析失败";
                 failedCount.value++;
-                console.log(`❌ 扩展失败: ${item.originalUrl}, 错误: ${item.error}`);
+                console.log(`❌ 解析失败: ${item.originalUrl}, 错误: ${item.error}`);
               }
             } else {
               item.error = "API响应格式错误";
@@ -237,7 +237,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               console.log(`❌ API响应格式错误:`, response);
             }
           } catch (err) {
-            const errorMessage = err instanceof Error ? err.message : "扩展失败";
+            const errorMessage = err instanceof Error ? err.message : "解析失败";
             item.error = errorMessage;
             failedCount.value++;
             console.error(`❌ 请求失败: ${item.originalUrl}, 错误:`, err);
@@ -271,7 +271,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           item.processing = true;
           item.error = void 0;
           try {
-            console.log(`重试扩展URL: ${item.originalUrl}`);
+            console.log(`重试解析URL: ${item.originalUrl}`);
             const response = await $fetch("/api/url-expand/batch", {
               method: "POST",
               body: {
@@ -290,7 +290,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 failedCount.value--;
                 console.log(`✅ 重试成功: ${item.originalUrl} -> ${result.expandedUrl}`);
               } else {
-                item.error = result.error || "重试扩展失败";
+                item.error = result.error || "重试解析失败";
                 retryFailedCount++;
                 console.log(`❌ 重试失败: ${item.originalUrl}, 错误: ${item.error}`);
               }
@@ -300,7 +300,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               console.log(`❌ 重试API响应格式错误:`, response);
             }
           } catch (err) {
-            const errorMessage = err instanceof Error ? err.message : "重试扩展失败";
+            const errorMessage = err instanceof Error ? err.message : "重试解析失败";
             item.error = errorMessage;
             retryFailedCount++;
             console.error(`❌ 重试请求失败: ${item.originalUrl}, 错误:`, err);
@@ -329,7 +329,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     function exportResults() {
       const results = matchingUrls.value.map((item) => ({
         原链接: item.originalUrl,
-        扩展后链接: item.expandedUrl || "扩展失败",
+        解析后链接: item.expandedUrl || "解析失败",
         状态: item.expanded ? "成功" : "失败",
         错误信息: item.error || ""
       }));
@@ -340,7 +340,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const link = (void 0).createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `短链接扩展结果_${(/* @__PURE__ */ new Date()).toISOString().slice(0, 10)}.csv`;
+      link.download = `短链接解析结果_${(/* @__PURE__ */ new Date()).toISOString().slice(0, 10)}.csv`;
       link.click();
       ElMessage.success("结果已导出");
     }
@@ -360,8 +360,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const _component_el_alert = ElAlert;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "url-expander-plugin" }, _attrs))} data-v-5cb8d904>`);
       _push(ssrRenderComponent(_component_ScriptHeader, {
-        title: "短链接批量扩展工具",
-        description: "智能识别并扩展短链接，支持批量处理和原列替换"
+        title: "短链接批量解析工具",
+        description: "智能识别并解析短链接，支持批量处理和原列替换"
       }, null, _parent));
       if (isReady.value && unref(currentTable)) {
         _push(`<div class="main-content" data-v-5cb8d904><div class="operation-grid" data-v-5cb8d904>`);
@@ -502,7 +502,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 _push2(ssrRenderComponent(_component_el_input, {
                   modelValue: newColumnName.value,
                   "onUpdate:modelValue": ($event) => newColumnName.value = $event,
-                  placeholder: "新列名称: 扩展后链接",
+                  placeholder: "新列名称: 解析后链接",
                   clearable: "",
                   size: "default"
                 }, null, _parent2, _scopeId));
@@ -580,7 +580,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     createVNode(_component_el_input, {
                       modelValue: newColumnName.value,
                       "onUpdate:modelValue": ($event) => newColumnName.value = $event,
-                      placeholder: "新列名称: 扩展后链接",
+                      placeholder: "新列名称: 解析后链接",
                       clearable: "",
                       size: "default"
                     }, null, 8, ["modelValue", "onUpdate:modelValue"])
@@ -641,10 +641,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                               }, {
                                 default: withCtx((_3, _push5, _parent5, _scopeId4) => {
                                   if (_push5) {
-                                    _push5(`已扩展`);
+                                    _push5(`已解析`);
                                   } else {
                                     return [
-                                      createTextVNode("已扩展")
+                                      createTextVNode("已解析")
                                     ];
                                   }
                                 }),
@@ -691,7 +691,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                                 size: "small"
                               }, {
                                 default: withCtx(() => [
-                                  createTextVNode("已扩展")
+                                  createTextVNode("已解析")
                                 ]),
                                 _: 1
                               })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -719,7 +719,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                         _: 1
                       }, _parent3, _scopeId2));
                       _push3(ssrRenderComponent(_component_el_table_column, {
-                        label: "扩展后链接",
+                        label: "解析后链接",
                         prop: "expandedUrl",
                         "min-width": "200",
                         "show-overflow-tooltip": ""
@@ -748,7 +748,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                               size: "small"
                             }, {
                               default: withCtx(() => [
-                                createTextVNode("已扩展")
+                                createTextVNode("已解析")
                               ]),
                               _: 1
                             })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -774,7 +774,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                           _: 1
                         }),
                         createVNode(_component_el_table_column, {
-                          label: "扩展后链接",
+                          label: "解析后链接",
                           prop: "expandedUrl",
                           "min-width": "200",
                           "show-overflow-tooltip": ""
@@ -815,7 +815,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                             size: "small"
                           }, {
                             default: withCtx(() => [
-                              createTextVNode("已扩展")
+                              createTextVNode("已解析")
                             ]),
                             _: 1
                           })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -841,7 +841,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                         _: 1
                       }),
                       createVNode(_component_el_table_column, {
-                        label: "扩展后链接",
+                        label: "解析后链接",
                         prop: "expandedUrl",
                         "min-width": "200",
                         "show-overflow-tooltip": ""
@@ -872,10 +872,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(` 🚀 ${ssrInterpolate(processing.value ? "正在处理..." : "开始扩展短链接")}`);
+                    _push3(` 🚀 ${ssrInterpolate(processing.value ? "正在处理..." : "开始解析短链接")}`);
                   } else {
                     return [
-                      createTextVNode(" 🚀 " + toDisplayString(processing.value ? "正在处理..." : "开始扩展短链接"), 1)
+                      createTextVNode(" 🚀 " + toDisplayString(processing.value ? "正在处理..." : "开始解析短链接"), 1)
                     ];
                   }
                 }),
@@ -964,7 +964,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 _push2(ssrRenderComponent(_component_el_alert, {
                   title: "🔄 智能替换模式",
                   type: "info",
-                  description: "原列替换将智能替换：保留原始数据内容，仅将短链接替换为扩展后的链接。建议先备份重要数据。",
+                  description: "原列替换将智能替换：保留原始数据内容，仅将短链接替换为解析后的链接。建议先备份重要数据。",
                   "show-icon": "",
                   class: "warning-alert"
                 }, null, _parent2, _scopeId));
@@ -982,7 +982,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     loading: processing.value
                   }, {
                     default: withCtx(() => [
-                      createTextVNode(" 🚀 " + toDisplayString(processing.value ? "正在处理..." : "开始扩展短链接"), 1)
+                      createTextVNode(" 🚀 " + toDisplayString(processing.value ? "正在处理..." : "开始解析短链接"), 1)
                     ]),
                     _: 1
                   }, 8, ["disabled", "loading"]),
@@ -1039,7 +1039,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   key: 1,
                   title: "🔄 智能替换模式",
                   type: "info",
-                  description: "原列替换将智能替换：保留原始数据内容，仅将短链接替换为扩展后的链接。建议先备份重要数据。",
+                  description: "原列替换将智能替换：保留原始数据内容，仅将短链接替换为解析后的链接。建议先备份重要数据。",
                   "show-icon": "",
                   class: "warning-alert"
                 })) : createCommentVNode("", true)

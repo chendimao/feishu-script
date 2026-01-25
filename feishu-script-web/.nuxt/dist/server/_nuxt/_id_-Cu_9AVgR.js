@@ -21,7 +21,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const route = useRoute();
     const scriptId = computed(() => route.params.id);
     const scriptNames = {
-      "url-expander": "URL 短链接扩展器",
+      "url-expander": "URL 短链接解析器",
       "data-processor": "数据处理器",
       "batch-export": "批量导出工具",
       "custom-script": "自定义脚本"

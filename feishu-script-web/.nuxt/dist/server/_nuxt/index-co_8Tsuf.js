@@ -27,8 +27,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const scripts = [
       {
         id: "url-expander-plugin",
-        name: "短链接扩展器",
-        description: "智能扩展短链接，支持批量处理和原列替换",
+        name: "短链接解析器",
+        description: "智能解析短链接，支持批量处理和原列替换",
         icon: connection_default,
         route: "/scripts/url-expander-plugin",
         status: "热门",

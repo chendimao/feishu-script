@@ -35,7 +35,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const tableFields = ref([]);
     const selectedFieldId = ref("");
     const replaceMode = ref("newColumn");
-    const newColumnName = ref("扩展后链接");
+    const newColumnName = ref("解析后链接");
     const urlPattern = ref("bit.ly,t.cn,tinyurl.com,short.link");
     const textFields = computed(
       () => tableFields.value.filter(
@@ -82,7 +82,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const _component_el_button = ElButton;
       const _component_el_collapse = ElCollapse;
       const _component_el_collapse_item = ElCollapseItem;
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "url-expander-page" }, _attrs))} data-v-f4c54c93><div class="page-header" data-v-f4c54c93><h2 data-v-f4c54c93>短链接批量扩展工具</h2><p class="page-description" data-v-f4c54c93>自动获取表格信息，批量将短链接转换为实际链接</p></div><div class="connection-status" data-v-f4c54c93>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "url-expander-page" }, _attrs))} data-v-f4c54c93><div class="page-header" data-v-f4c54c93><h2 data-v-f4c54c93>短链接批量解析工具</h2><p class="page-description" data-v-f4c54c93>自动获取表格信息，批量将短链接转换为实际链接</p></div><div class="connection-status" data-v-f4c54c93>`);
       if (!feishuConfig.appToken) {
         _push(ssrRenderComponent(_component_el_alert, {
           title: "提示",

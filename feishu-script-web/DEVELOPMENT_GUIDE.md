@@ -60,7 +60,7 @@ feishu-script-web/
 │   ├── index.vue            # 已优化：首页
 │   ├── test.vue             # 已优化：测试页面
 │   └── scripts/
-│       ├── url-expander-plugin.vue    # 核心功能：URL扩展器
+│       ├── url-expander-plugin.vue    # 核心功能：URL解析器
 │       └── url-expander-simple.vue    # 简化版
 ├── public/
 │   ├── logo.svg             # 新增：主Logo

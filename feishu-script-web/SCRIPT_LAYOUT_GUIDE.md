@@ -50,9 +50,9 @@
 
 ## 📁 已更新的页面
 
-### 1. 短链接扩展器 (`/scripts/url-expander-plugin`)
+### 1. 短链接解析器 (`/scripts/url-expander-plugin`)
 - ✅ 使用 ScriptHeader 组件
-- ✅ 标题：🔗 短链接批量扩展工具
+- ✅ 标题：🔗 短链接批量解析工具
 - ✅ 描述：自动获取当前表格信息，批量将短链接转换为实际链接
 
 ### 2. API测试工具 (`/test`)

@@ -1,6 +1,6 @@
 /**
- * 批量URL扩展API
- * 接收URL数组，返回扩展结果
+ * 批量URL解析API
+ * 接收URL数组，返回解析结果
  */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    // 使用真实的URL扩展逻辑
+    // 使用真实的URL解析逻辑
     const results = await Promise.all(urls.map(async (url: string) => {
       try {
         // 检查是否为支持的短链接格式
@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
           clearTimeout(timeoutId)
           const expandedUrl = response.url
           
-          // 检查是否真的被扩展了
+          // 检查是否真的被解析了
           if (expandedUrl && expandedUrl !== url) {
             return {
               success: true,
@@ -106,11 +106,11 @@ export default defineEventHandler(async (event) => {
           throw fetchError
         }
       } catch (error: any) {
-        console.error(`扩展URL失败 ${url}:`, error.message)
+        console.error(`解析URL失败 ${url}:`, error.message)
         return {
           success: false,
           originalUrl: url,
-          error: `扩展失败: ${error.message}`
+          error: `解析失败: ${error.message}`
         }
       }
     }))
@@ -126,10 +126,10 @@ export default defineEventHandler(async (event) => {
       results
     }
   } catch (error: any) {
-    console.error('批量URL扩展失败:', error)
+    console.error('批量URL解析失败:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: error.message || '批量URL扩展失败'
+      statusMessage: error.message || '批量URL解析失败'
     })
   }
 })

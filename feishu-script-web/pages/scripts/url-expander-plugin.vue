@@ -2,8 +2,8 @@
   <div class="url-expander-plugin">
     <!-- 脚本头部 -->
     <ScriptHeader 
-      title="短链接批量扩展工具"
-      description="智能识别并扩展短链接，支持批量处理和原列替换"
+      title="短链接批量解析工具"
+      description="智能识别并解析短链接，支持批量处理和原列替换"
     />
 
     <!-- 主要操作区域 -->
@@ -69,7 +69,7 @@
             <div class="form-group" v-if="replaceMode === 'newColumn'">
               <el-input
                 v-model="newColumnName"
-                placeholder="新列名称: 扩展后链接"
+                placeholder="新列名称: 解析后链接"
                 clearable
                 size="default"
               />
@@ -95,12 +95,12 @@
             <el-table-column label="短链接" prop="originalUrl" min-width="150" show-overflow-tooltip />
             <el-table-column label="状态" width="80">
               <template #default="{ row }">
-                <el-tag v-if="row.expanded" type="success" size="small">已扩展</el-tag>
+                <el-tag v-if="row.expanded" type="success" size="small">已解析</el-tag>
                 <el-tag v-else-if="row.processing" type="warning" size="small">处理中</el-tag>
                 <el-tag v-else type="info" size="small">待处理</el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="扩展后链接" prop="expandedUrl" min-width="200" show-overflow-tooltip />
+            <el-table-column label="解析后链接" prop="expandedUrl" min-width="200" show-overflow-tooltip />
           </el-table>
           
         </el-card>
@@ -117,7 +117,7 @@
               :disabled="!canStartProcess"
               :loading="processing"
             >
-              🚀 {{ processing ? '正在处理...' : '开始扩展短链接' }}
+              🚀 {{ processing ? '正在处理...' : '开始解析短链接' }}
             </el-button>
             
             <el-button 
@@ -169,7 +169,7 @@
             v-if="replaceMode === 'inplace' && selectedFieldId"
             title="🔄 智能替换模式"
             type="info"
-            description="原列替换将智能替换：保留原始数据内容，仅将短链接替换为扩展后的链接。建议先备份重要数据。"
+            description="原列替换将智能替换：保留原始数据内容，仅将短链接替换为解析后的链接。建议先备份重要数据。"
             show-icon
             class="warning-alert"
           />
@@ -190,7 +190,7 @@ definePageMeta({
 
 // 设置页面头部信息
 useHead({
-  title: '短链接扩展器 - 多维表格脚本管理'
+  title: '短链接解析器 - 多维表格脚本管理'
 })
 
 // 飞书SDK相关
@@ -212,7 +212,7 @@ const selectedFieldId = ref('')
 
 // 替换模式
 const replaceMode = ref<'inplace' | 'newColumn'>('inplace')
-const newColumnName = ref('扩展后链接')
+const newColumnName = ref('解析后链接')
 
 // URL匹配规则
 const urlPattern = ref('')
@@ -337,11 +337,11 @@ function extractUrlFromField(fieldValue: any): string[] {
   return [...new Set(urls)]
 }
 
-// 智能替换函数：在原始内容中将短链接替换为扩展后的链接
+// 智能替换函数：在原始内容中将短链接替换为解析后的链接
 function replaceUrlInContent(originalContent: any, shortUrl: string, expandedUrl: string): any {
   console.log('智能替换函数输入:', { originalContent, shortUrl, expandedUrl })
   
-  // 如果原始内容为空或null，直接返回扩展后的URL
+  // 如果原始内容为空或null，直接返回解析后的URL
   if (!originalContent) {
     return expandedUrl
   }
@@ -390,8 +390,8 @@ function replaceUrlInContent(originalContent: any, shortUrl: string, expandedUrl
     return result
   }
   
-  // 其他情况，返回扩展后的URL
-  console.log('未知类型，返回扩展后的URL')
+  // 其他情况，返回解析后的URL
+  console.log('未知类型，返回解析后的URL')
   return expandedUrl
 }
 
@@ -612,7 +612,7 @@ async function analyzeUrls() {
   ElMessage.success(`找到 ${matches.length} 个匹配的短链接`)
 }
 
-// 开始处理短链接扩展
+// 开始处理短链接解析
 async function startProcess() {
   if (!canStartProcess.value) {
     ElMessage.error('请先选择字段并确保有匹配的短链接')
@@ -627,15 +627,15 @@ async function startProcess() {
   failedCount.value = 0
 
   try {
-    // 批量处理URL扩展
+    // 批量处理URL解析
     for (let i = 0; i < matchingUrls.value.length; i++) {
       const item = matchingUrls.value[i]
       item.processing = true
       
       try {
-        console.log(`正在扩展URL: ${item.originalUrl}`)
+        console.log(`正在解析URL: ${item.originalUrl}`)
         
-        // 调用URL扩展API
+        // 调用URL解析API
         const response = await $fetch('/api/url-expand/batch', {
           method: 'POST',
           body: {
@@ -653,11 +653,11 @@ async function startProcess() {
             item.expandedUrl = result.expandedUrl
             item.expanded = true
             successCount.value++
-            console.log(`✅ 扩展成功: ${item.originalUrl} -> ${result.expandedUrl}`)
+            console.log(`✅ 解析成功: ${item.originalUrl} -> ${result.expandedUrl}`)
           } else {
-            item.error = result.error || '扩展失败'
+            item.error = result.error || '解析失败'
             failedCount.value++
-            console.log(`❌ 扩展失败: ${item.originalUrl}, 错误: ${item.error}`)
+            console.log(`❌ 解析失败: ${item.originalUrl}, 错误: ${item.error}`)
           }
         } else {
           item.error = 'API响应格式错误'
@@ -665,7 +665,7 @@ async function startProcess() {
           console.log(`❌ API响应格式错误:`, response)
         }
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : '扩展失败'
+        const errorMessage = err instanceof Error ? err.message : '解析失败'
         item.error = errorMessage
         failedCount.value++
         console.error(`❌ 请求失败: ${item.originalUrl}, 错误:`, err)
@@ -711,9 +711,9 @@ async function retryFailedUrls() {
       item.error = undefined // 清除之前的错误信息
       
       try {
-        console.log(`重试扩展URL: ${item.originalUrl}`)
+        console.log(`重试解析URL: ${item.originalUrl}`)
         
-        // 调用URL扩展API
+        // 调用URL解析API
         const response = await $fetch('/api/url-expand/batch', {
           method: 'POST',
           body: {
@@ -735,7 +735,7 @@ async function retryFailedUrls() {
             failedCount.value--
             console.log(`✅ 重试成功: ${item.originalUrl} -> ${result.expandedUrl}`)
           } else {
-            item.error = result.error || '重试扩展失败'
+            item.error = result.error || '重试解析失败'
             retryFailedCount++
             console.log(`❌ 重试失败: ${item.originalUrl}, 错误: ${item.error}`)
           }
@@ -745,7 +745,7 @@ async function retryFailedUrls() {
           console.log(`❌ 重试API响应格式错误:`, response)
         }
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : '重试扩展失败'
+        const errorMessage = err instanceof Error ? err.message : '重试解析失败'
         item.error = errorMessage
         retryFailedCount++
         console.error(`❌ 重试请求失败: ${item.originalUrl}, 错误:`, err)
@@ -903,7 +903,7 @@ async function writeBackResults() {
     console.log(`准备更新 ${successfulItems.length} 条记录`)
     
     if (successfulItems.length === 0) {
-      ElMessage.warning('没有成功扩展的URL需要写回')
+      ElMessage.warning('没有成功解析的URL需要写回')
       return
     }
     
@@ -958,11 +958,11 @@ async function writeBackResults() {
               const currentValue = await targetField.getValue(item.recordId)
               console.log('  原始字段值:', currentValue)
               
-              // 智能替换：在原始数据中将短链接替换为扩展后的链接
+              // 智能替换：在原始数据中将短链接替换为解析后的链接
               if (item.expandedUrl) {
                 finalValue = replaceUrlInContent(currentValue, item.originalUrl, item.expandedUrl)
               } else {
-                console.warn('  扩展后的URL为空，跳过替换')
+                console.warn('  解析后的URL为空，跳过替换')
                 continue
               }
               console.log('  替换后的值:', finalValue)
@@ -1007,7 +1007,7 @@ async function writeBackResults() {
 function exportResults() {
   const results = matchingUrls.value.map(item => ({
     原链接: item.originalUrl,
-    扩展后链接: item.expandedUrl || '扩展失败',
+    解析后链接: item.expandedUrl || '解析失败',
     状态: item.expanded ? '成功' : '失败',
     错误信息: item.error || ''
   }))
@@ -1020,7 +1020,7 @@ function exportResults() {
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
   const link = document.createElement('a')
   link.href = URL.createObjectURL(blob)
-  link.download = `短链接扩展结果_${new Date().toISOString().slice(0, 10)}.csv`
+  link.download = `短链接解析结果_${new Date().toISOString().slice(0, 10)}.csv`
   link.click()
   
   ElMessage.success('结果已导出')
@@ -1121,7 +1121,7 @@ onMounted(async () => {
 .operation-grid {
   display: grid;
   gap: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 
 /* 配置卡片样式 */

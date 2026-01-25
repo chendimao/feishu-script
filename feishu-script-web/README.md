@@ -5,7 +5,7 @@
 ## 功能特性
 
 - **脚本列表**: 展示所有可用脚本,快速选择和执行
-- **短链接扩展器**: 批量将短链接转换为实际链接
+- **短链接解析器**: 批量将短链接转换为实际链接
 - **飞书多维表格集成**: 直接使用飞书SDK，无需配置API密钥
 - **批量处理**: 支持大规模数据批量处理,带进度显示
 - **多种替换模式**: 原列替换或新增列展示结果
@@ -71,16 +71,16 @@ feishu-script-web/
 │   ├── index.vue                    # 脚本列表首页
 │   └── scripts/
 │       ├── [id].vue                 # 脚本执行页框架
-│       └── url-expander-plugin.vue  # 短链接扩展器(插件版)
+│       └── url-expander-plugin.vue  # 短链接解析器(插件版)
 ├── server/
 │   ├── api/
 │   │   ├── feishu/
 │   │   │   └── fields.get.ts  # 获取表格字段
-│   │   └── url-expand.post.ts # URL 扩展处理
+│   │   └── url-expand.post.ts # URL 解析处理
 │   └── utils/
 │       ├── feishu-auth.ts     # 飞书认证
 │       ├── feishu-bitable.ts  # 多维表格 API
-│       └── url-expander.ts    # URL 扩展器
+│       └── url-expander.ts    # URL 解析器
 ├── layouts/
 │   └── default.vue            # 默认布局
 ├── components/                # 组件
@@ -90,16 +90,16 @@ feishu-script-web/
 
 ## 使用说明
 
-### 短链接扩展器
+### 短链接解析器
 
-1. 在首页点击"短链接扩展器"
+1. 在首页点击"短链接解析器"
 2. 在飞书多维表格中使用此插件（推荐）
 3. 或者手动输入表格信息进行测试
 4. 选择包含短链接的列
 5. 选择替换模式:
    - **原列替换**: 直接覆盖原数据
-   - **新增列**: 创建新列展示扩展结果
-6. 点击"开始处理"执行批量扩展
+   - **新增列**: 创建新列展示解析结果
+6. 点击"开始处理"执行批量解析
 7. 处理完成后可导出结果或写回数据
 
 ## API 接口
@@ -110,7 +110,7 @@ feishu-script-web/
 GET /api/feishu/fields?app_token=xxx&table_id=xxx
 ```
 
-### URL 扩展处理
+### URL 解析处理
 
 ```
 POST /api/url-expand

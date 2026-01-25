@@ -2,7 +2,7 @@
   <div class="url-expander-page">
     <!-- 页面标题 -->
     <div class="page-header">
-      <h2>短链接批量扩展工具</h2>
+      <h2>短链接批量解析工具</h2>
       <p class="page-description">自动获取表格信息，批量将短链接转换为实际链接</p>
     </div>
 
@@ -174,7 +174,7 @@ const selectedFieldId = ref('')
 
 // 替换模式
 const replaceMode = ref<'inplace' | 'newColumn'>('newColumn')
-const newColumnName = ref('扩展后链接')
+const newColumnName = ref('解析后链接')
 
 // URL匹配规则
 const urlPattern = ref('bit.ly,t.cn,tinyurl.com,short.link')
@@ -282,14 +282,14 @@ onMounted(async () => {
 }
 
 .main-content {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .operation-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .operation-item {
@@ -500,7 +500,7 @@ onMounted(async () => {
   .operation-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    margin-bottom: 32px;
+    margin-bottom: 10px;
   }
   
   .operation-item {

@@ -680,7 +680,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const previewRecords = ref([]);
     const selectedFieldId = ref("");
     const replaceMode = ref("newColumn");
-    const newColumnName = ref("扩展后链接");
+    const newColumnName = ref("解析后链接");
     const urlPattern = ref("bit.ly,t.cn,tinyurl.com,short.link");
     const matchingUrls = ref([]);
     const totalCount = ref(0);
@@ -836,7 +836,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               matchItem.expanded = true;
               successCount.value++;
             } else {
-              matchItem.error = result.error || "扩展失败";
+              matchItem.error = result.error || "解析失败";
               failedCount.value++;
             }
             matchItem.processing = false;
@@ -885,7 +885,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const _component_el_progress = ElProgress;
       const _component_el_collapse = ElCollapse;
       const _component_el_collapse_item = ElCollapseItem;
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "url-expander-page" }, _attrs))} data-v-df25b716><div class="page-header" data-v-df25b716><h2 data-v-df25b716>短链接批量扩展工具</h2><p class="page-description" data-v-df25b716>自动获取表格信息，批量将短链接转换为实际链接</p></div><div class="connection-status" data-v-df25b716>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "url-expander-page" }, _attrs))} data-v-df25b716><div class="page-header" data-v-df25b716><h2 data-v-df25b716>短链接批量解析工具</h2><p class="page-description" data-v-df25b716>自动获取表格信息，批量将短链接转换为实际链接</p></div><div class="connection-status" data-v-df25b716>`);
       if (!unref(feishuSDK).isFeishuEnv.value && !feishuConfig.appToken) {
         _push(ssrRenderComponent(_component_el_alert, {
           title: "提示",
@@ -1623,10 +1623,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                                 _push4(ssrRenderComponent(_component_el_tag, { type: "success" }, {
                                   default: withCtx((_3, _push5, _parent5, _scopeId4) => {
                                     if (_push5) {
-                                      _push5(`已扩展`);
+                                      _push5(`已解析`);
                                     } else {
                                       return [
-                                        createTextVNode("已扩展")
+                                        createTextVNode("已解析")
                                       ];
                                     }
                                   }),
@@ -1666,7 +1666,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                                   type: "success"
                                 }, {
                                   default: withCtx(() => [
-                                    createTextVNode("已扩展")
+                                    createTextVNode("已解析")
                                   ]),
                                   _: 1
                                 })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -1692,7 +1692,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                           _: 1
                         }, _parent3, _scopeId2));
                         _push3(ssrRenderComponent(_component_el_table_column, {
-                          label: "扩展后链接",
+                          label: "解析后链接",
                           prop: "expandedUrl",
                           "min-width": "300",
                           "show-overflow-tooltip": ""
@@ -1720,7 +1720,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                                 type: "success"
                               }, {
                                 default: withCtx(() => [
-                                  createTextVNode("已扩展")
+                                  createTextVNode("已解析")
                                 ]),
                                 _: 1
                               })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -1744,7 +1744,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                             _: 1
                           }),
                           createVNode(_component_el_table_column, {
-                            label: "扩展后链接",
+                            label: "解析后链接",
                             prop: "expandedUrl",
                             "min-width": "300",
                             "show-overflow-tooltip": ""
@@ -1800,7 +1800,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                               type: "success"
                             }, {
                               default: withCtx(() => [
-                                createTextVNode("已扩展")
+                                createTextVNode("已解析")
                               ]),
                               _: 1
                             })) : row.processing ? (openBlock(), createBlock(_component_el_tag, {
@@ -1824,7 +1824,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                           _: 1
                         }),
                         createVNode(_component_el_table_column, {
-                          label: "扩展后链接",
+                          label: "解析后链接",
                           prop: "expandedUrl",
                           "min-width": "300",
                           "show-overflow-tooltip": ""
@@ -1865,10 +1865,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(` 🔗 ${ssrInterpolate(processing.value ? "正在处理..." : "开始扩展短链接")}`);
+                    _push3(` 🔗 ${ssrInterpolate(processing.value ? "正在处理..." : "开始解析短链接")}`);
                   } else {
                     return [
-                      createTextVNode(" 🔗 " + toDisplayString(processing.value ? "正在处理..." : "开始扩展短链接"), 1)
+                      createTextVNode(" 🔗 " + toDisplayString(processing.value ? "正在处理..." : "开始解析短链接"), 1)
                     ];
                   }
                 }),
@@ -1954,7 +1954,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     loading: processing.value
                   }, {
                     default: withCtx(() => [
-                      createTextVNode(" 🔗 " + toDisplayString(processing.value ? "正在处理..." : "开始扩展短链接"), 1)
+                      createTextVNode(" 🔗 " + toDisplayString(processing.value ? "正在处理..." : "开始解析短链接"), 1)
                     ]),
                     _: 1
                   }, 8, ["disabled", "loading"]),

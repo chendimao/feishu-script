@@ -78,14 +78,14 @@ async function testConnection() {
     })
     result.value += `记录API测试:\n${JSON.stringify(recordsResponse, null, 2)}\n\n`
     
-    // 测试URL扩展
+    // 测试URL解析
     const urlResponse = await $fetch('/api/url-expand/batch', {
       method: 'POST',
       body: {
         urls: ['https://bit.ly/test1', 'https://t.cn/test2']
       }
     })
-    result.value += `URL扩展API测试:\n${JSON.stringify(urlResponse, null, 2)}`
+    result.value += `URL解析API测试:\n${JSON.stringify(urlResponse, null, 2)}`
     
   } catch (error) {
     result.value = `错误: ${error}`

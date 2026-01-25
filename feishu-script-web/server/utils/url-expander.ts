@@ -1,5 +1,5 @@
 /**
- * URL 扩展器服务
+ * URL 解析器服务
  * 封装 url-expander-server.js 的核心逻辑
  */
 
@@ -30,7 +30,7 @@ function isValidUrl(urlString: string): boolean {
 }
 
 /**
- * 扩展单个 URL
+ * 解析单个 URL
  */
 export async function expandUrl(shortUrl: string): Promise<ExpandResult> {
   if (!isValidUrl(shortUrl)) {
@@ -100,7 +100,7 @@ export async function expandUrl(shortUrl: string): Promise<ExpandResult> {
 }
 
 /**
- * 批量扩展 URL
+ * 批量解析 URL
  */
 export async function expandUrlsInBatch(urls: string[]): Promise<ExpandResult[]> {
   const results: ExpandResult[] = []
