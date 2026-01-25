@@ -44,6 +44,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '飞书脚本管理平台' },
       ],
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: './favicon.svg' },
         { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
       ],
     },

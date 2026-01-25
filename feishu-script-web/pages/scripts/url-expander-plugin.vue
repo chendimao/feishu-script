@@ -1024,7 +1024,7 @@ onMounted(async () => {
   max-width: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f8fafc;
   min-height: 100vh;
 }
 
@@ -1043,10 +1043,7 @@ onMounted(async () => {
   margin-bottom: 8px;
   font-size: 20px;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1f2937;
 }
 
 .page-description {
@@ -1120,28 +1117,20 @@ onMounted(async () => {
 
 .operation-card .el-card__header {
   padding: 12px 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #ffffff;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
 }
 
-.operation-card .el-card__header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-  pointer-events: none;
-}
+/* 移除装饰性渐变 */
 
 .operation-card h3 {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: #1f2937;
   position: relative;
   z-index: 1;
 }
@@ -1263,8 +1252,9 @@ onMounted(async () => {
 }
 
 .action-buttons .el-button--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   color: white;
+  border: none;
 }
 
 .action-buttons .el-button--primary:hover {
@@ -1273,8 +1263,9 @@ onMounted(async () => {
 }
 
 .action-buttons .el-button--success {
-  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  background: #10b981;
   color: white;
+  border: none;
 }
 
 .action-buttons .el-button--success:hover {
@@ -1283,8 +1274,9 @@ onMounted(async () => {
 }
 
 .action-buttons .el-button--warning {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: #f59e0b;
   color: white;
+  border: none;
 }
 
 .action-buttons .el-button--warning:hover {
@@ -1293,8 +1285,9 @@ onMounted(async () => {
 }
 
 .action-buttons .el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning) {
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  color: #8b4513;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
 }
 
 .action-buttons .el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning):hover {
@@ -1305,7 +1298,7 @@ onMounted(async () => {
 .progress-section {
   margin-top: 24px;
   padding: 24px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #ffffff;
   border-radius: 16px;
   border: 1px solid #e2e8f0;
 }
@@ -1333,7 +1326,7 @@ onMounted(async () => {
 }
 
 .el-table th {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #f8fafc;
   color: #2d3748;
   font-weight: 600;
   border: none;
@@ -1345,7 +1338,7 @@ onMounted(async () => {
 }
 
 .el-table tr:hover td {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: #f7fafc;
 }
 
 /* 表单样式优化 */
@@ -1395,18 +1388,21 @@ onMounted(async () => {
 }
 
 .el-tag--success {
-  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  background: #10b981;
   color: white;
+  border: none;
 }
 
 .el-tag--warning {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: #f59e0b;
   color: white;
+  border: none;
 }
 
 .el-tag--info {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   color: white;
+  border: none;
 }
 
 /* 响应式设计 */
@@ -1515,7 +1511,7 @@ onMounted(async () => {
 /* 页面整体样式调整 */
 .url-expander-plugin {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f8fafc;
 }
 
 /* 主要内容区域 */
@@ -1535,10 +1531,10 @@ onMounted(async () => {
 }
 
 .operation-card .el-card__header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #ffffff;
+  color: #1f2937;
   padding: 24px;
-  border-bottom: none;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .operation-card .el-card__body {
@@ -1574,7 +1570,7 @@ onMounted(async () => {
 
 /* 按钮样式优化 */
 .action-buttons .el-button--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
@@ -1591,7 +1587,8 @@ onMounted(async () => {
 .warning-alert {
   border-radius: 16px;
   border: none;
-  background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
 }
 
 /* 响应式优化 */

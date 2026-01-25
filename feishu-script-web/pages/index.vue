@@ -4,8 +4,14 @@
     <section class="hero-section">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 class="hero-title">多维表格脚本管理</h1>
-          <p class="hero-subtitle">让工作更高效，让数据更智能</p>
+          <AppLogo 
+            size="large" 
+            :show-text="true" 
+            :show-subtitle="true"
+            :show-background="true"
+            app-name="多维表格脚本管理"
+            subtitle="让工作更高效，让数据更智能"
+          />
         </div>
         
       

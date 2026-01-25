@@ -98,7 +98,7 @@ async function testConnection() {
 <style scoped>
 .test-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f8fafc;
 }
 
 .test-page > .el-card {
@@ -111,14 +111,14 @@ async function testConnection() {
 }
 
 .test-page .el-card__header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #ffffff;
+  color: #1f2937;
   padding: 24px;
-  border-bottom: none;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .test-page .el-card__header h3 {
-  color: white;
+  color: #1f2937;
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
@@ -152,7 +152,7 @@ async function testConnection() {
 
 /* 按钮样式 */
 .test-page .el-button--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
@@ -169,7 +169,7 @@ async function testConnection() {
 .result {
   margin-top: 24px;
   padding: 24px;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: #ffffff;
   border-radius: 16px;
   border: 2px solid #e2e8f0;
 }

@@ -1,8 +1,0 @@
-const script_vue_vue_type_style_index_0_scoped_dc3b4d43_lang = ".script-layout[data-v-dc3b4d43]{background:#f5f7fa;min-height:100vh}.script-header[data-v-dc3b4d43]{background:#fff;border-bottom:1px solid #e4e7ed;margin-bottom:24px;padding:20px 0}.header-content[data-v-dc3b4d43]{align-items:center;display:flex;gap:20px;margin:0 auto;max-width:1200px;padding:0 20px}.back-button[data-v-dc3b4d43]{flex-shrink:0}.header-info[data-v-dc3b4d43]{flex:1}.script-title[data-v-dc3b4d43]{color:#303133;font-size:24px;font-weight:600;margin:0 0 8px}.script-description[data-v-dc3b4d43]{color:#606266;font-size:14px;line-height:1.5;margin:0}.script-content[data-v-dc3b4d43]{margin:0 auto;max-width:1200px;padding:0 20px}@media(max-width:768px){.header-content[data-v-dc3b4d43]{align-items:flex-start;flex-direction:column;gap:16px;padding:0 16px}.script-content[data-v-dc3b4d43]{padding:0 16px}.script-title[data-v-dc3b4d43]{font-size:20px}}@media(max-width:480px){.script-header[data-v-dc3b4d43]{margin-bottom:16px;padding:16px 0}.header-content[data-v-dc3b4d43],.script-content[data-v-dc3b4d43]{padding:0 12px}}";
-
-const scriptStyles_BG_tPpaa = [
-  script_vue_vue_type_style_index_0_scoped_dc3b4d43_lang
-];
-
-export { scriptStyles_BG_tPpaa as default };
-//# sourceMappingURL=script-styles.BG_tPpaa.mjs.map

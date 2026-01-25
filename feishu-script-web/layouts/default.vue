@@ -2,7 +2,13 @@
   <el-container class="layout-container">
     <el-header class="layout-header">
       <div class="header-content">
-        <h1 class="app-title">{{ config.public.appName }}</h1>
+        <AppLogo 
+          size="small" 
+          :show-text="true" 
+          :show-subtitle="false"
+          :show-background="false"
+          :app-name="config.public.appName"
+        />
       </div>
     </el-header>
     <el-main class="layout-main">
@@ -24,11 +30,13 @@ const config = useRuntimeConfig()
 }
 
 .layout-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 0;
-  height: 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  padding: 8px 16px;
+  height: 45px;
   line-height: 40px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .header-content {
@@ -37,11 +45,7 @@ const config = useRuntimeConfig()
   padding: 0 10px;
 }
 
-.app-title {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 600;
-}
+/* Logo样式已移至AppLogo组件 */
 
 .layout-main {
   flex: 1;

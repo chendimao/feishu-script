@@ -242,7 +242,7 @@ onMounted(async () => {
   max-width: 1400px;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f8fafc;
   min-height: 100vh;
 }
 
@@ -261,10 +261,7 @@ onMounted(async () => {
   margin-bottom: 12px;
   font-size: 28px;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1f2937;
 }
 
 .page-description {
@@ -350,8 +347,9 @@ onMounted(async () => {
 
 .operation-card .el-card__header {
   padding: 20px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #ffffff;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
 }
@@ -421,7 +419,7 @@ onMounted(async () => {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   min-width: 180px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
   color: white;
 }
 

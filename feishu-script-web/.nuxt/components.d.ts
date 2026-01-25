@@ -14,6 +14,7 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 
+export const AppLogo: typeof import("../components/AppLogo.vue").default
 export const ScriptHeader: typeof import("../components/ScriptHeader.vue").default
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue").default
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout").default
@@ -31,8 +32,8 @@ export const ElAffix: typeof import("../node_modules/element-plus/es/components/
 export const ElAlert: typeof import("../node_modules/element-plus/es/components/alert/index").ElAlert
 export const ElAnchor: typeof import("../node_modules/element-plus/es/components/anchor/index").ElAnchor
 export const ElAnchorLink: typeof import("../node_modules/element-plus/es/components/anchor/index").ElAnchorLink
-export const ElAside: typeof import("../node_modules/element-plus/es/components/container/index").ElAside
 export const ElAutoResizer: typeof import("../node_modules/element-plus/es/components/table-v2/index").ElAutoResizer
+export const ElAside: typeof import("../node_modules/element-plus/es/components/container/index").ElAside
 export const ElAutocomplete: typeof import("../node_modules/element-plus/es/components/autocomplete/index").ElAutocomplete
 export const ElAvatar: typeof import("../node_modules/element-plus/es/components/avatar/index").ElAvatar
 export const ElAvatarGroup: typeof import("../node_modules/@element-plus/nuxt/dist/element-plus/es/components/avatar-group/index").ElAvatarGroup
@@ -85,8 +86,8 @@ export const ElInputTag: typeof import("../node_modules/element-plus/es/componen
 export const ElLink: typeof import("../node_modules/element-plus/es/components/link/index").ElLink
 export const ElMain: typeof import("../node_modules/element-plus/es/components/container/index").ElMain
 export const ElMention: typeof import("../node_modules/element-plus/es/components/mention/index").ElMention
-export const ElMenu: typeof import("../node_modules/element-plus/es/components/menu/index").ElMenu
 export const ElMenuItem: typeof import("../node_modules/element-plus/es/components/menu/index").ElMenuItem
+export const ElMenu: typeof import("../node_modules/element-plus/es/components/menu/index").ElMenu
 export const ElMenuItemGroup: typeof import("../node_modules/element-plus/es/components/menu/index").ElMenuItemGroup
 export const ElOption: typeof import("../node_modules/element-plus/es/components/select/index").ElOption
 export const ElOptionGroup: typeof import("../node_modules/element-plus/es/components/select/index").ElOptionGroup
@@ -121,8 +122,8 @@ export const ElStep: typeof import("../node_modules/element-plus/es/components/s
 export const ElSteps: typeof import("../node_modules/element-plus/es/components/steps/index").ElSteps
 export const ElSubMenu: typeof import("../node_modules/element-plus/es/components/menu/index").ElSubMenu
 export const ElSwitch: typeof import("../node_modules/element-plus/es/components/switch/index").ElSwitch
-export const ElTable: typeof import("../node_modules/element-plus/es/components/table/index").ElTable
 export const ElTabPane: typeof import("../node_modules/element-plus/es/components/tabs/index").ElTabPane
+export const ElTable: typeof import("../node_modules/element-plus/es/components/table/index").ElTable
 export const ElTableColumn: typeof import("../node_modules/element-plus/es/components/table/index").ElTableColumn
 export const ElTableV2: typeof import("../node_modules/element-plus/es/components/table-v2/index").ElTableV2
 export const ElTabs: typeof import("../node_modules/element-plus/es/components/tabs/index").ElTabs
@@ -263,8 +264,8 @@ export const ElIconGoblet: typeof import("../node_modules/@element-plus/icons-vu
 export const ElIconGobletFull: typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletFull
 export const ElIconGobletSquare: typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletSquare
 export const ElIconGobletSquareFull: typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletSquareFull
-export const ElIconGoods: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Goods
 export const ElIconGoldMedal: typeof import("../node_modules/@element-plus/icons-vue/dist/index").GoldMedal
+export const ElIconGoods: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Goods
 export const ElIconGoodsFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").GoodsFilled
 export const ElIconGrape: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Grape
 export const ElIconGrid: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Grid
@@ -274,10 +275,10 @@ export const ElIconHeadset: typeof import("../node_modules/@element-plus/icons-v
 export const ElIconHelp: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Help
 export const ElIconHelpFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").HelpFilled
 export const ElIconHide: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Hide
-export const ElIconHistogram: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Histogram
 export const ElIconHomeFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").HomeFilled
 export const ElIconHotWater: typeof import("../node_modules/@element-plus/icons-vue/dist/index").HotWater
 export const ElIconHouse: typeof import("../node_modules/@element-plus/icons-vue/dist/index").House
+export const ElIconHistogram: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Histogram
 export const ElIconIceCream: typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCream
 export const ElIconIceCreamRound: typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCreamRound
 export const ElIconIceCreamSquare: typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCreamSquare
@@ -319,8 +320,8 @@ export const ElIconMoreFilled: typeof import("../node_modules/@element-plus/icon
 export const ElIconMostlyCloudy: typeof import("../node_modules/@element-plus/icons-vue/dist/index").MostlyCloudy
 export const ElIconMouse: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mouse
 export const ElIconMug: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mug
-export const ElIconMute: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mute
 export const ElIconMuteNotification: typeof import("../node_modules/@element-plus/icons-vue/dist/index").MuteNotification
+export const ElIconMute: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mute
 export const ElIconNoSmoking: typeof import("../node_modules/@element-plus/icons-vue/dist/index").NoSmoking
 export const ElIconNotebook: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Notebook
 export const ElIconNotification: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Notification
@@ -362,14 +363,14 @@ export const ElIconRefrigerator: typeof import("../node_modules/@element-plus/ic
 export const ElIconRemove: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Remove
 export const ElIconRemoveFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").RemoveFilled
 export const ElIconRight: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Right
+export const ElIconScaleToOriginal: typeof import("../node_modules/@element-plus/icons-vue/dist/index").ScaleToOriginal
 export const ElIconSchool: typeof import("../node_modules/@element-plus/icons-vue/dist/index").School
 export const ElIconScissor: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Scissor
-export const ElIconScaleToOriginal: typeof import("../node_modules/@element-plus/icons-vue/dist/index").ScaleToOriginal
 export const ElIconSearch: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Search
 export const ElIconSelect: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Select
 export const ElIconSell: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sell
-export const ElIconSemiSelect: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SemiSelect
 export const ElIconService: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Service
+export const ElIconSemiSelect: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SemiSelect
 export const ElIconSetUp: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SetUp
 export const ElIconSetting: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Setting
 export const ElIconShare: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Share
@@ -382,11 +383,11 @@ export const ElIconShoppingTrolley: typeof import("../node_modules/@element-plus
 export const ElIconSmoking: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Smoking
 export const ElIconSoccer: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Soccer
 export const ElIconSoldOut: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SoldOut
-export const ElIconSort: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sort
 export const ElIconSortDown: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SortDown
+export const ElIconSort: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sort
 export const ElIconSortUp: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SortUp
-export const ElIconStamp: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stamp
 export const ElIconStar: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Star
+export const ElIconStamp: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stamp
 export const ElIconStarFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").StarFilled
 export const ElIconStopwatch: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stopwatch
 export const ElIconSuccessFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SuccessFilled
@@ -396,8 +397,8 @@ export const ElIconSuitcaseLine: typeof import("../node_modules/@element-plus/ic
 export const ElIconSunny: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunny
 export const ElIconSunrise: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunrise
 export const ElIconSunset: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunset
-export const ElIconSwitch: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Switch
 export const ElIconSwitchButton: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SwitchButton
+export const ElIconSwitch: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Switch
 export const ElIconSwitchFilled: typeof import("../node_modules/@element-plus/icons-vue/dist/index").SwitchFilled
 export const ElIconTakeawayBox: typeof import("../node_modules/@element-plus/icons-vue/dist/index").TakeawayBox
 export const ElIconTicket: typeof import("../node_modules/@element-plus/icons-vue/dist/index").Ticket
@@ -445,6 +446,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components").Html
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components").Body
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island").default
+export const LazyAppLogo: LazyComponent<typeof import("../components/AppLogo.vue").default>
 export const LazyScriptHeader: LazyComponent<typeof import("../components/ScriptHeader.vue").default>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue").default>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout").default>
@@ -462,8 +464,8 @@ export const LazyElAffix: LazyComponent<typeof import("../node_modules/element-p
 export const LazyElAlert: LazyComponent<typeof import("../node_modules/element-plus/es/components/alert/index").ElAlert>
 export const LazyElAnchor: LazyComponent<typeof import("../node_modules/element-plus/es/components/anchor/index").ElAnchor>
 export const LazyElAnchorLink: LazyComponent<typeof import("../node_modules/element-plus/es/components/anchor/index").ElAnchorLink>
-export const LazyElAside: LazyComponent<typeof import("../node_modules/element-plus/es/components/container/index").ElAside>
 export const LazyElAutoResizer: LazyComponent<typeof import("../node_modules/element-plus/es/components/table-v2/index").ElAutoResizer>
+export const LazyElAside: LazyComponent<typeof import("../node_modules/element-plus/es/components/container/index").ElAside>
 export const LazyElAutocomplete: LazyComponent<typeof import("../node_modules/element-plus/es/components/autocomplete/index").ElAutocomplete>
 export const LazyElAvatar: LazyComponent<typeof import("../node_modules/element-plus/es/components/avatar/index").ElAvatar>
 export const LazyElAvatarGroup: LazyComponent<typeof import("../node_modules/@element-plus/nuxt/dist/element-plus/es/components/avatar-group/index").ElAvatarGroup>
@@ -516,8 +518,8 @@ export const LazyElInputTag: LazyComponent<typeof import("../node_modules/elemen
 export const LazyElLink: LazyComponent<typeof import("../node_modules/element-plus/es/components/link/index").ElLink>
 export const LazyElMain: LazyComponent<typeof import("../node_modules/element-plus/es/components/container/index").ElMain>
 export const LazyElMention: LazyComponent<typeof import("../node_modules/element-plus/es/components/mention/index").ElMention>
-export const LazyElMenu: LazyComponent<typeof import("../node_modules/element-plus/es/components/menu/index").ElMenu>
 export const LazyElMenuItem: LazyComponent<typeof import("../node_modules/element-plus/es/components/menu/index").ElMenuItem>
+export const LazyElMenu: LazyComponent<typeof import("../node_modules/element-plus/es/components/menu/index").ElMenu>
 export const LazyElMenuItemGroup: LazyComponent<typeof import("../node_modules/element-plus/es/components/menu/index").ElMenuItemGroup>
 export const LazyElOption: LazyComponent<typeof import("../node_modules/element-plus/es/components/select/index").ElOption>
 export const LazyElOptionGroup: LazyComponent<typeof import("../node_modules/element-plus/es/components/select/index").ElOptionGroup>
@@ -552,8 +554,8 @@ export const LazyElStep: LazyComponent<typeof import("../node_modules/element-pl
 export const LazyElSteps: LazyComponent<typeof import("../node_modules/element-plus/es/components/steps/index").ElSteps>
 export const LazyElSubMenu: LazyComponent<typeof import("../node_modules/element-plus/es/components/menu/index").ElSubMenu>
 export const LazyElSwitch: LazyComponent<typeof import("../node_modules/element-plus/es/components/switch/index").ElSwitch>
-export const LazyElTable: LazyComponent<typeof import("../node_modules/element-plus/es/components/table/index").ElTable>
 export const LazyElTabPane: LazyComponent<typeof import("../node_modules/element-plus/es/components/tabs/index").ElTabPane>
+export const LazyElTable: LazyComponent<typeof import("../node_modules/element-plus/es/components/table/index").ElTable>
 export const LazyElTableColumn: LazyComponent<typeof import("../node_modules/element-plus/es/components/table/index").ElTableColumn>
 export const LazyElTableV2: LazyComponent<typeof import("../node_modules/element-plus/es/components/table-v2/index").ElTableV2>
 export const LazyElTabs: LazyComponent<typeof import("../node_modules/element-plus/es/components/tabs/index").ElTabs>
@@ -694,8 +696,8 @@ export const LazyElIconGoblet: LazyComponent<typeof import("../node_modules/@ele
 export const LazyElIconGobletFull: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletFull>
 export const LazyElIconGobletSquare: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletSquare>
 export const LazyElIconGobletSquareFull: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").GobletSquareFull>
-export const LazyElIconGoods: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Goods>
 export const LazyElIconGoldMedal: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").GoldMedal>
+export const LazyElIconGoods: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Goods>
 export const LazyElIconGoodsFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").GoodsFilled>
 export const LazyElIconGrape: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Grape>
 export const LazyElIconGrid: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Grid>
@@ -705,10 +707,10 @@ export const LazyElIconHeadset: LazyComponent<typeof import("../node_modules/@el
 export const LazyElIconHelp: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Help>
 export const LazyElIconHelpFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").HelpFilled>
 export const LazyElIconHide: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Hide>
-export const LazyElIconHistogram: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Histogram>
 export const LazyElIconHomeFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").HomeFilled>
 export const LazyElIconHotWater: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").HotWater>
 export const LazyElIconHouse: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").House>
+export const LazyElIconHistogram: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Histogram>
 export const LazyElIconIceCream: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCream>
 export const LazyElIconIceCreamRound: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCreamRound>
 export const LazyElIconIceCreamSquare: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").IceCreamSquare>
@@ -750,8 +752,8 @@ export const LazyElIconMoreFilled: LazyComponent<typeof import("../node_modules/
 export const LazyElIconMostlyCloudy: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").MostlyCloudy>
 export const LazyElIconMouse: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mouse>
 export const LazyElIconMug: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mug>
-export const LazyElIconMute: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mute>
 export const LazyElIconMuteNotification: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").MuteNotification>
+export const LazyElIconMute: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Mute>
 export const LazyElIconNoSmoking: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").NoSmoking>
 export const LazyElIconNotebook: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Notebook>
 export const LazyElIconNotification: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Notification>
@@ -793,14 +795,14 @@ export const LazyElIconRefrigerator: LazyComponent<typeof import("../node_module
 export const LazyElIconRemove: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Remove>
 export const LazyElIconRemoveFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").RemoveFilled>
 export const LazyElIconRight: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Right>
+export const LazyElIconScaleToOriginal: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").ScaleToOriginal>
 export const LazyElIconSchool: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").School>
 export const LazyElIconScissor: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Scissor>
-export const LazyElIconScaleToOriginal: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").ScaleToOriginal>
 export const LazyElIconSearch: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Search>
 export const LazyElIconSelect: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Select>
 export const LazyElIconSell: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sell>
-export const LazyElIconSemiSelect: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SemiSelect>
 export const LazyElIconService: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Service>
+export const LazyElIconSemiSelect: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SemiSelect>
 export const LazyElIconSetUp: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SetUp>
 export const LazyElIconSetting: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Setting>
 export const LazyElIconShare: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Share>
@@ -813,11 +815,11 @@ export const LazyElIconShoppingTrolley: LazyComponent<typeof import("../node_mod
 export const LazyElIconSmoking: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Smoking>
 export const LazyElIconSoccer: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Soccer>
 export const LazyElIconSoldOut: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SoldOut>
-export const LazyElIconSort: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sort>
 export const LazyElIconSortDown: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SortDown>
+export const LazyElIconSort: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sort>
 export const LazyElIconSortUp: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SortUp>
-export const LazyElIconStamp: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stamp>
 export const LazyElIconStar: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Star>
+export const LazyElIconStamp: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stamp>
 export const LazyElIconStarFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").StarFilled>
 export const LazyElIconStopwatch: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Stopwatch>
 export const LazyElIconSuccessFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SuccessFilled>
@@ -827,8 +829,8 @@ export const LazyElIconSuitcaseLine: LazyComponent<typeof import("../node_module
 export const LazyElIconSunny: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunny>
 export const LazyElIconSunrise: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunrise>
 export const LazyElIconSunset: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Sunset>
-export const LazyElIconSwitch: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Switch>
 export const LazyElIconSwitchButton: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SwitchButton>
+export const LazyElIconSwitch: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Switch>
 export const LazyElIconSwitchFilled: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").SwitchFilled>
 export const LazyElIconTakeawayBox: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").TakeawayBox>
 export const LazyElIconTicket: LazyComponent<typeof import("../node_modules/@element-plus/icons-vue/dist/index").Ticket>
