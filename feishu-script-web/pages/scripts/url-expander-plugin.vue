@@ -2,16 +2,30 @@
   <div class="url-expander-plugin">
     <!-- 脚本头部 -->
     <ScriptHeader 
-      title="🔗 短链接批量扩展工具"
-      description="自动获取当前表格信息，批量将短链接转换为实际链接"
+      title="短链接批量扩展工具"
+      description="智能识别并扩展短链接，支持批量处理和原列替换"
     />
 
     <!-- 主要操作区域 -->
     <div v-if="isReady && currentTable" class="main-content">
-      <el-card class="operation-card">
-    
-        <div class="card-content">
-          <div class="compact-form">
+      <div class="operation-grid">
+        <!-- 配置卡片 -->
+        <el-card class="config-card">
+          <template #header>
+            <div class="card-header">
+              <div class="header-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"/>
+                </svg>
+              </div>
+              <div class="header-content">
+                <h3 class="header-title">处理配置</h3>
+                <p class="header-desc">设置URL匹配规则和处理方式</p>
+              </div>
+            </div>
+          </template>
+          
+          <div class="config-form">
             <div class="form-group">
               <el-input
                 v-model="urlPattern"
@@ -20,7 +34,7 @@
                 size="default"
               />
               <div class="help-text">
-                💡 多个域名用逗号分隔，留空匹配所有URL
+                多个域名用逗号分隔，留空匹配所有URL
               </div>
             </div>
             
@@ -40,8 +54,8 @@
                   :value="field.id"
                 />
               </el-select>
-              <div class="help-text" v-if="textFields.length === 0">
-                ⚠️ 未找到文本类型的列
+              <div class="help-text warning" v-if="textFields.length === 0">
+                未找到文本类型的列
               </div>
             </div>
             
@@ -61,8 +75,8 @@
               />
             </div>
           </div>
-        </div>
-      </el-card>
+        </el-card>
+      </div>
 
       <!-- 数据预览 -->
       <div v-if="selectedFieldId && matchingUrls.length > 0" class="preview-section">
@@ -1103,12 +1117,65 @@ onMounted(async () => {
   padding: 8px 0;
 }
 
-.compact-form {
+/* 现代化操作网格 */
+.operation-grid {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* 配置卡片样式 */
+.config-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.header-content {
+  flex: 1;
+}
+
+.header-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.header-desc {
+  font-size: 0.875rem;
+  color: #6b7280;
   margin: 0;
+  line-height: 1.4;
+}
+
+.config-form {
+  padding: 24px 0 0 0;
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .form-group:last-child {
@@ -1141,14 +1208,19 @@ onMounted(async () => {
 }
 
 .help-text {
-  font-size: 11px;
-  color: #8492a6;
+  font-size: 12px;
+  color: #6b7280;
   margin-top: 4px;
-  line-height: 1.3;
+  line-height: 1.4;
   padding: 4px 8px;
   background: #f8fafc;
   border-radius: 4px;
   border-left: 2px solid #667eea;
+}
+
+.help-text.warning {
+  color: #f59e0b;
+  font-weight: 500;
 }
 
 .preview-section {

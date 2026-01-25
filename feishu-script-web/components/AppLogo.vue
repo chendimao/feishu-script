@@ -68,8 +68,7 @@
     </svg>
     
     <!-- 文字标识 -->
-    <div v-if="showText" class="logo-text">
-      <span class="app-name">{{ appName }}</span>
+    <div v-if="showText" class="logo-text"> 
       <span v-if="showSubtitle" class="app-subtitle">{{ subtitle }}</span>
     </div>
   </div>
@@ -137,8 +136,7 @@ const logoSize = computed(() => {
 }
 
 .app-subtitle {
-  font-size: 0.75rem;
-  color: #6B7280;
+  font-size: 1.25rem; 
   line-height: 1.2;
 }
 
