@@ -8,9 +8,7 @@
     <el-main class="layout-main">
       <slot />
     </el-main>
-    <el-footer class="layout-footer">
-      <p>Powered by Nuxt 3 + Element Plus</p>
-    </el-footer>
+   
   </el-container>
 </template>
 

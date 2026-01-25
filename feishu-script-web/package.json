@@ -2,6 +2,7 @@
   "name": "feishu-script-web",
   "private": true,
   "type": "module",
+  "output": "dist",
   "scripts": {
     "build": "nuxt build && node scripts/post-build.cjs",
     "build:prod": "nuxt build --config nuxt.config.prod.ts && node scripts/post-build.cjs",

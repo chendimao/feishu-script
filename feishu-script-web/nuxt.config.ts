@@ -35,6 +35,7 @@ export default defineNuxtConfig({
 
   // 应用配置
   app: {
+    baseURL: './',  // 使用相对路径，符合插件上架规范
     head: {
       title: '多维表格脚本管理',
       meta: [
@@ -43,7 +44,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '飞书脚本管理平台' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
       ],
     },
   },
@@ -62,6 +63,13 @@ export default defineNuxtConfig({
     public: {
       appName: '多维表格脚本管理',
     },
+  },
+
+  // 路由配置 - 使用hash路由符合插件规范
+  router: {
+    options: {
+      hashMode: true
+    }
   },
 
   // Nitro 服务器配置

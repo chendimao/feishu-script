@@ -1896,7 +1896,7 @@ async function defaultHandler(error, event, opts) {
   const statusMessage = error.statusMessage || "Server Error";
   const url = getRequestURL(event, { xForwardedHost: true, xForwardedProto: true });
   if (statusCode === 404) {
-    const baseURL = "/";
+    const baseURL = "/./";
     if (/^\/[^/]/.test(baseURL) && !url.pathname.startsWith(baseURL)) {
       const redirectTo = `${baseURL}${url.pathname.slice(1)}${url.search}`;
       return {
@@ -2032,7 +2032,7 @@ const _UVcjwPkk4p0umH4Kt2cLvlYvSSXsfqBaZuiPE8_4Y = (function(nitro) {
 
 const rootDir = "E:/phpStudy/WWW/feishuScript/feishu-script-web";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"飞书脚本管理平台"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"多维表格脚本管理"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"飞书脚本管理平台"}],"link":[{"rel":"icon","type":"image/x-icon","href":"./favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"多维表格脚本管理"};
 
 const appRootTag = "div";
 

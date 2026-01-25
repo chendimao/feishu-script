@@ -897,54 +897,83 @@ async function writeBackResults() {
     let failedCount = 0
     
     // 根据替换模式采用不同的更新策略
-    for (let i = 0; i < successfulItems.length; i++) {
-      const item = successfulItems[i]
+    if (replaceMode.value === 'newColumn') {
+      // 新增列模式：使用批量操作提升性能
       try {
-        console.log(`更新记录 ${i + 1}/${successfulItems.length}:`)
-        console.log('  recordId:', item.recordId)
-        console.log('  originalUrl:', item.originalUrl)
-        console.log('  expandedUrl:', item.expandedUrl)
-        
-        let finalValue = item.expandedUrl || ''
-        
-        // 如果是原列替换模式，需要智能替换
-        if (replaceMode.value === 'inplace') {
-          console.log('  使用原列替换模式，读取原始数据进行智能替换')
-          
-          try {
-            // 读取当前记录的原始字段值
-            const currentValue = await targetField.getValue(item.recordId)
-            console.log('  原始字段值:', currentValue)
-            
-            // 智能替换：在原始数据中将短链接替换为扩展后的链接
-            if (item.expandedUrl) {
-              finalValue = replaceUrlInContent(currentValue, item.originalUrl, item.expandedUrl)
-            } else {
-              console.warn('  扩展后的URL为空，跳过替换')
-              continue
-            }
-            console.log('  替换后的值:', finalValue)
-            
-          } catch (readError) {
-            console.warn('  读取原始值失败，使用直接覆盖模式:', readError)
-            finalValue = item.expandedUrl || ''
-          }
-        }
-        
-        // 写回数据
-        await targetField.setValue(item.recordId, finalValue)
-        console.log('  ✅ setValue成功')
-        
-        successCount++
-      } catch (recordError: any) {
-        console.error(`更新记录失败 ${item.recordId}:`, recordError)
-        console.error('错误详情:', {
+        console.log('使用批量操作模式更新数据')
+        const recordValues = successfulItems.map(item => ({
           recordId: item.recordId,
-          originalUrl: item.originalUrl,
-          expandedUrl: item.expandedUrl,
-          error: recordError.message
-        })
-        failedCount++
+          fields: {
+            [targetFieldId]: item.expandedUrl
+          }
+        }))
+        
+        // 使用批量更新接口
+        await currentTable.setRecords(recordValues)
+        successCount = successfulItems.length
+        console.log(`✅ 批量更新成功: ${successCount} 条记录`)
+        
+      } catch (batchError) {
+        console.warn('批量更新失败，回退到单条更新模式:', batchError)
+        // 回退到单条更新
+        await updateRecordsIndividually()
+      }
+    } else {
+      // 原列替换模式：需要智能替换，使用单条更新
+      await updateRecordsIndividually()
+    }
+    
+    // 单条更新函数
+    async function updateRecordsIndividually() {
+      for (let i = 0; i < successfulItems.length; i++) {
+        const item = successfulItems[i]
+        try {
+          console.log(`更新记录 ${i + 1}/${successfulItems.length}:`)
+          console.log('  recordId:', item.recordId)
+          console.log('  originalUrl:', item.originalUrl)
+          console.log('  expandedUrl:', item.expandedUrl)
+          
+          let finalValue = item.expandedUrl || ''
+          
+          // 如果是原列替换模式，需要智能替换
+          if (replaceMode.value === 'inplace') {
+            console.log('  使用原列替换模式，读取原始数据进行智能替换')
+            
+            try {
+              // 读取当前记录的原始字段值
+              const currentValue = await targetField.getValue(item.recordId)
+              console.log('  原始字段值:', currentValue)
+              
+              // 智能替换：在原始数据中将短链接替换为扩展后的链接
+              if (item.expandedUrl) {
+                finalValue = replaceUrlInContent(currentValue, item.originalUrl, item.expandedUrl)
+              } else {
+                console.warn('  扩展后的URL为空，跳过替换')
+                continue
+              }
+              console.log('  替换后的值:', finalValue)
+              
+            } catch (readError) {
+              console.warn('  读取原始值失败，使用直接覆盖模式:', readError)
+              finalValue = item.expandedUrl || ''
+            }
+          }
+          
+          // 写回数据
+          await targetField.setValue(item.recordId, finalValue)
+          console.log('  ✅ setValue成功')
+          
+          successCount++
+        } catch (recordError: any) {
+          console.error(`更新记录失败 ${item.recordId}:`, recordError)
+          console.error('错误详情:', {
+            recordId: item.recordId,
+            originalUrl: item.originalUrl,
+            expandedUrl: item.expandedUrl,
+            error: recordError.message
+          })
+          failedCount++
+        }
       }
     }
     
