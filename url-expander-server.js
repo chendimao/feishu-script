@@ -21,7 +21,7 @@ const { URL } = require('url');
 
 const PORT = process.env.PORT || 3030;
 const MAX_CONCURRENT = parseInt(process.env.MAX_CONCURRENT || '10', 10);
-const TIMEOUT = parseInt(process.env.TIMEOUT || '10000', 10);
+const TIMEOUT = parseInt(process.env.TIMEOUT || '600000', 10);
 
 function log(level, message, data = null) {
   const timestamp = new Date().toISOString();

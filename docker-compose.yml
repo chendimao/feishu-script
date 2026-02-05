@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: feishu-script-backend
+    ports:
+      - "3030:3030"
+    environment:
+      - NODE_ENV=production
+      - PORT=3030
+      # 请替换为你的飞书应用配置
+      - FEISHU_APP_ID=${FEISHU_APP_ID}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET}
+      - CORS_ORIGIN=${CORS_ORIGIN:-*}
+      - MAX_CONCURRENT=${MAX_CONCURRENT:-10}
+      - TIMEOUT=${TIMEOUT:-600000}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3030/api/health', (r) => r.statusCode === 200 ? process.exit(0) : process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - feishu-script-network
+
+  # 可选: Nginx 反向代理
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: feishu-script-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./nginx/ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - backend
+  #   restart: unless-stopped
+  #   networks:
+  #     - feishu-script-network
+
+networks:
+  feishu-script-network:
+    driver: bridge
+
+volumes:
+  # 如有需要可添加持久化卷
+  # backend-data:

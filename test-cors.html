@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS 测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>CORS 跨域测试</h1>
+    
+    <div class="test-section">
+        <h2>测试接口: https://aiti.xin:5003/url-expand/batch</h2>
+        <button onclick="testCors()">测试 CORS 请求</button>
+        <button onclick="testOptions()">测试 OPTIONS 预检</button>
+        <button onclick="clearResults()">清除结果</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const API_URL = 'https://aiti.xin:5003/url-expand/batch';
+        const TEST_DATA = {
+            "urls": [
+                "https://t.co/IRV3Rjr1El",
+                "https://t.co/07iLzTCDLz",
+                "https://t.co/XpMFLkgKPQ",
+                "https://t.co/km7RXnDKcW",
+                "https://t.co/KTy6hTZS7A",
+                "https://t.co/wHX8BLeuKa",
+                "https://t.co/TAQ2OfHKFy",
+                "https://t.co/DpIUDtyMpP",
+                "https://t.co/SQUZ007ZXb",
+                "https://t.co/dbPMuHbmlz",
+                "https://t.co/xCZ9HH1njZ",
+                "https://t.co/k4iBZWxjyM",
+                "https://t.co/T9LFt5fnKG",
+                "https://t.co/GDe4T8oj6J",
+                "https://t.co/ou4BmXRYOT",
+                "https://t.co/IQVJSXRglt",
+                "https://t.co/gRtTp4yYLp",
+                "https://t.co/TloATZdvqo",
+                "https://t.co/KNBoeEw6Vn",
+                "https://t.co/7GaoGixYvL",
+                "https://t.co/2l9lXFGkn7",
+                "https://t.co/9PANlRgHUh",
+                "https://t.co/rhQMf1XPvN",
+                "https://t.co/oma47DZvhN",
+                "https://t.co/m2xT1hlUfa",
+                "https://t.co/2zEjufWEoy",
+                "https://t.co/DnQMTFim0v",
+                "https://t.co/XyBODoQhzF"
+            ]
+        };
+
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        async function testCors() {
+            addResult('开始测试 CORS 请求...', 'info');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(TEST_DATA)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('✅ CORS 请求成功！', 'success');
+                    addResult(`响应状态: ${response.status}`, 'success');
+                    addResult(`响应数据: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+                } else {
+                    addResult(`❌ 请求失败，状态码: ${response.status}`, 'error');
+                    const text = await response.text();
+                    addResult(`错误信息: ${text}`, 'error');
+                }
+            } catch (error) {
+                addResult(`❌ CORS 请求失败: ${error.message}`, 'error');
+                
+                if (error.message.includes('CORS')) {
+                    addResult('这是一个 CORS 跨域错误，说明服务器的 CORS 配置有问题', 'error');
+                } else if (error.message.includes('Failed to fetch')) {
+                    addResult('网络请求失败，可能是服务器未启动或网络问题', 'error');
+                }
+            }
+        }
+
+        async function testOptions() {
+            addResult('开始测试 OPTIONS 预检请求...', 'info');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Access-Control-Request-Method': 'POST',
+                        'Access-Control-Request-Headers': 'Content-Type',
+                    }
+                });
+
+                addResult(`OPTIONS 响应状态: ${response.status}`, 'info');
+                
+                // 检查 CORS 头部
+                const corsHeaders = {
+                    'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                    'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods'),
+                    'Access-Control-Allow-Headers': response.headers.get('Access-Control-Allow-Headers'),
+                    'Access-Control-Allow-Credentials': response.headers.get('Access-Control-Allow-Credentials')
+                };
+
+                addResult('CORS 响应头部:', 'info');
+                addResult(`<pre>${JSON.stringify(corsHeaders, null, 2)}</pre>`, 'info');
+
+                if (corsHeaders['Access-Control-Allow-Origin']) {
+                    addResult('✅ 服务器支持 CORS', 'success');
+                } else {
+                    addResult('❌ 服务器不支持 CORS 或配置不正确', 'error');
+                }
+
+            } catch (error) {
+                addResult(`❌ OPTIONS 请求失败: ${error.message}`, 'error');
+            }
+        }
+
+        // 页面加载时显示当前域名
+        window.onload = function() {
+            addResult(`当前页面域名: ${window.location.origin}`, 'info');
+            addResult(`目标 API: ${API_URL}`, 'info');
+            addResult('点击按钮开始测试 CORS 配置', 'info');
+        };
+    </script>
+</body>
+</html>

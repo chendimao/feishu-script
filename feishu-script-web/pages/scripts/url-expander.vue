@@ -2,7 +2,7 @@
   <div class="url-expander-page">
     <!-- 页面标题 -->
     <div class="page-header">
-      <h2>短链接批量扩展工具</h2>
+      <h2>短链接批量解析工具</h2>
       <p class="page-description">自动获取表格信息，批量将短链接转换为实际链接</p>
     </div>
 
@@ -122,12 +122,12 @@
               <el-table-column label="短链接" prop="originalUrl" min-width="200" show-overflow-tooltip />
               <el-table-column label="状态" width="100">
                 <template #default="{ row }">
-                  <el-tag v-if="row.expanded" type="success">已扩展</el-tag>
+                  <el-tag v-if="row.expanded" type="success">已解析</el-tag>
                   <el-tag v-else-if="row.processing" type="warning">处理中</el-tag>
                   <el-tag v-else type="info">待处理</el-tag>
                 </template>
               </el-table-column>
-              <el-table-column label="扩展后链接" prop="expandedUrl" min-width="300" show-overflow-tooltip />
+              <el-table-column label="解析后链接" prop="expandedUrl" min-width="300" show-overflow-tooltip />
             </el-table>
             
             <div v-if="matchingUrls.length > 10" class="more-info">
@@ -152,7 +152,7 @@
               :disabled="!canStartProcess"
               :loading="processing"
             >
-              🔗 {{ processing ? '正在处理...' : '开始扩展短链接' }}
+              🔗 {{ processing ? '正在处理...' : '开始解析短链接' }}
             </el-button>
             
             <el-button 
@@ -258,7 +258,7 @@ const selectedFieldId = ref('')
 
 // 替换模式
 const replaceMode = ref<'inplace' | 'newColumn'>('newColumn')
-const newColumnName = ref('扩展后链接')
+const newColumnName = ref('解析后链接')
 
 // URL匹配规则
 const urlPattern = ref('bit.ly,t.cn,tinyurl.com,short.link')
@@ -448,7 +448,7 @@ async function loadAllRecords() {
   }
 }
 
-// 开始处理短链接扩展
+// 开始处理短链接解析
 async function startProcess() {
   if (!canStartProcess.value) {
     ElMessage.error('请先选择字段并确保有匹配的短链接')
@@ -463,7 +463,7 @@ async function startProcess() {
   failedCount.value = 0
 
   try {
-    // 批量处理URL扩展
+    // 批量处理URL解析
     const urlsToExpand = matchingUrls.value.map(item => item.originalUrl)
     
     const response = await $fetch<{
@@ -492,7 +492,7 @@ async function startProcess() {
           matchItem.expanded = true
           successCount.value++
         } else {
-          matchItem.error = result.error || '扩展失败'
+          matchItem.error = result.error || '解析失败'
           failedCount.value++
         }
         

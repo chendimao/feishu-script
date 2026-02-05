@@ -4,12 +4,13 @@
  */
 
 import { URL } from 'url'
+import { config } from '../config'
 
 // 配置
-const MAX_CONCURRENT = 10
-const TIMEOUT = 600000
+const MAX_CONCURRENT = config.urlExpander.maxConcurrent
+const TIMEOUT = config.urlExpander.timeout
 
-interface ExpandResult {
+export interface ExpandResult {
   success: boolean
   originalUrl: string
   expandedUrl?: string
@@ -138,72 +139,4 @@ export function extractUrls(text: string): string[] {
   const urlRegex = /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g
   const matches = text.match(urlRegex)
   return matches || []
-}
-
-/**
- * 处理单元格内容中的 URL
- */
-export async function processCellContent(
-  content: string,
-  options?: {
-    extractAll?: boolean // 是否提取所有 URL，默认只处理纯 URL
-    replaceInText?: boolean // 是否在原文中替换
-  }
-): Promise<{
-  isUrl: boolean
-  urls: Array<{
-    original: string
-    expanded?: string
-    error?: string
-  }>
-  result: string
-}> {
-  // 如果内容本身就是 URL
-  if (isValidUrl(content)) {
-    const result = await expandUrl(content)
-    return {
-      isUrl: true,
-      urls: [{
-        original: content,
-        expanded: result.expanded,
-        error: result.error
-      }],
-      result: result.expanded || content
-    }
-  }
-
-  // 如果需要提取文本中的 URL
-  if (options?.extractAll) {
-    const urls = extractUrls(content)
-    const results: Array<{ original: string; expanded?: string; error?: string }> = []
-
-    for (const url of urls) {
-      const result = await expandUrl(url)
-      results.push({
-        original: url,
-        expanded: result.expanded,
-        error: result.error
-      })
-    }
-
-    // 替换原文中的 URL
-    let result = content
-    for (const { original, expanded, error } of results) {
-      if (expanded && !error) {
-        result = result.replace(original, expanded)
-      }
-    }
-
-    return {
-      isUrl: false,
-      urls: results,
-      result
-    }
-  }
-
-  return {
-    isUrl: false,
-    urls: [],
-    result: content
-  }
 }

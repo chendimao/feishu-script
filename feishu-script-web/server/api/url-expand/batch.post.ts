@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
 
         // 创建超时控制器
         const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 10000) // 10秒超时
+        const timeoutId = setTimeout(() => controller.abort(), 600000) // 10秒超时
         
         try {
           // 尝试通过HTTP HEAD请求获取重定向URL
@@ -78,7 +78,7 @@ export default defineEventHandler(async (event) => {
           } else {
             // 如果HEAD请求没有重定向，尝试GET请求
             const getController = new AbortController()
-            const getTimeoutId = setTimeout(() => getController.abort(), 10000)
+            const getTimeoutId = setTimeout(() => getController.abort(), 600000)
             
             try {
               const getResponse = await fetch(url, {
