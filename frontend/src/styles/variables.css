@@ -1,0 +1,32 @@
+/* ===== Global CSS Variables ===== */
+:root {
+  /* Colors */
+  --fe-primary: #6366f1;
+  --fe-primary-dark: #4f46e5;
+  --fe-success: #10b981;
+  --fe-warning: #f59e0b;
+  --fe-error: #ef4444;
+  --fe-info: #3b82f6;
+
+  --fe-gray-50: #f9fafb;
+  --fe-gray-100: #f3f4f6;
+  --fe-gray-200: #e5e7eb;
+  --fe-gray-300: #d1d5db;
+  --fe-gray-400: #9ca3af;
+  --fe-gray-500: #6b7280;
+  --fe-gray-600: #4b5563;
+  --fe-gray-700: #374151;
+  --fe-gray-800: #1f2937;
+  --fe-gray-900: #111827;
+
+  /* Radius */
+  --fe-radius-sm: 4px;
+  --fe-radius-md: 6px;
+  --fe-radius-lg: 8px;
+  --fe-radius-xl: 12px;
+
+  /* Shadows */
+  --fe-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --fe-shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --fe-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
